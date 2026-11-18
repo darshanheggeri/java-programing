@@ -1,1 +1,74 @@
 
+import java.util.Scanner;
+
+public class EmailOperations {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String validDomain = "bmsce.ac.in";
+
+        System.out.print("Enter student email address: ");
+        String email = sc.nextLine();
+
+        System.out.println("\n1. Length of email: " + email.length());
+
+        int at = email.indexOf('@');
+        String username = email.substring(0, at);
+        System.out.println("2. Username: " + username);
+
+        String domain = email.substring(at + 1);
+        System.out.println("3. Domain: " + domain);
+
+        if (domain.equals(validDomain)) {
+            System.out.println("Email belongs to BMSCE.");
+        } else {
+            System.out.println("Email does not belong to BMSCE.");
+        }
+
+        String lower = email.toLowerCase();
+        System.out.println("4. Lowercase email: " + lower);
+
+        System.out.print("Enter prefix to check: ");
+        String prefix = sc.nextLine();
+
+        if (email.startsWith(prefix)) {
+            System.out.println("5. Email starts with the given prefix.");
+        } else {
+            System.out.println("5. Email does not start with the given prefix.");
+        }
+
+        if (lower.endsWith(validDomain)) {
+            System.out.println("6. Email ends with bmsce.ac.in.");
+        } else {
+            System.out.println("6. Email does not end with bmsce.ac.in.");
+        }
+
+        String updated = lower.replace(validDomain, "cse.bmsce.ac.in");
+        System.out.println("7. Updated email: " + updated);
+
+        System.out.print("Enter character or sequence to search: ");
+        String search = sc.nextLine();
+
+        if (lower.contains(search.toLowerCase())) {
+            System.out.println("8. Email contains the given sequence.");
+        } else {
+            System.out.println("8. Email does not contain the given sequence.");
+        }
+
+        String trimmed = email.trim();
+        System.out.println("9. Trimmed email: " + trimmed);
+
+        System.out.print("Enter another email address: ");
+        String email2 = sc.nextLine();
+
+        if (trimmed.equalsIgnoreCase(email2.trim())) {
+            System.out.println("10. Both email addresses are identical.");
+        } else {
+            System.out.println("10. Both email addresses are different.");
+        }
+
+        sc.close();
+    }
+}
+
